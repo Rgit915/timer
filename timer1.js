@@ -31,12 +31,24 @@ const validInput = function (args) {
 
 };
 
+// function to schedule the alarms
+const scheduleAlarms = function(times) {
+  //iterate over the array of time values
+  for(let time of times){
+    setTimeout(() =>{
+      process.stdout.write('\u0007');  // to play a beep sound
+      console.log(`Alarm! ${time} seconds have passed.`);
+    }, time * 1000);   // converting time into milliseconds
+  }
+}
 
 //to get command line arguments and using slice(2) excluding the first two elements
 
 const commandLineArgs = process.argv.slice(2);
 
-validInput(commandLineArgs);  // call the function
+// call the functions
+const alarmTimes = validInput(commandLineArgs);
+scheduleAlarms(alarmTimes);        
 
 
 
